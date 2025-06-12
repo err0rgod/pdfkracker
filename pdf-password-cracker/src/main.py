@@ -1,6 +1,6 @@
 import argparse
 import pikepdf
-from utils import read_passwords, attempt_crack
+from utils import read_passwords, attempt_open_pdf
 
 def main():
     parser = argparse.ArgumentParser(description="PDF Password Cracker")
@@ -12,7 +12,7 @@ def main():
     passwords = read_passwords(args.wordlist)
     
     for password in passwords:
-        if attempt_crack(args.pdf_file, password):
+        if attempt_open_pdf(args.pdf_file, password):
             print(f"Password found: {password}")
             return
     

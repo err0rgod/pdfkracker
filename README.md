@@ -1,46 +1,96 @@
-# PDF Password Cracker
+# 🔐 PDF Password Cracker
 
-A command-line tool for cracking PDF passwords using a wordlist.
+A lightweight Python tool to **brute-force crack password-protected PDF files** using a wordlist.
 
-## Features
+> 📂 Supports both user-provided wordlists and a default fallback.  
+> 🛠️ Uses `pikepdf` for fast, silent password attempts.
 
-- Attempts to unlock password-protected PDF files using a list of potential passwords.
-- Utilizes the `pikepdf` library for handling PDF files.
+---
 
-## Installation
+## 🚀 Features
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd pdf-password-cracker
-   ```
+- ✅ Attempts to unlock PDF using a wordlist (brute-force style)
+- ⚡ Fast and simple — just point to a file and wordlist
+- 🧠 Automatically skips empty/blank lines in wordlists
+- 🔒 Clean failure handling for wrong passwords
+- 📜 Works with encrypted PDFs (user-password protected)
 
-2. Install the required dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+---
 
-## Usage
+## 📦 Installation
 
-To use the PDF password cracker, run the following command in your terminal:
+### 🔹 Auto install (with `setup.sh`)
 
-```
-python src/main.py <path_to_pdf> <path_to_passwords>
+```bash
+chmod +x setup.sh
+./setup.sh
 ```
 
-- `<path_to_pdf>`: The path to the PDF file you want to crack.
-- `<path_to_passwords>`: The path to the wordlist file (e.g., `passwords.txt`).
+### 🔹 Manual install
 
-## Example
-
-```
-python src/main.py example.pdf passwords.txt
+```bash
+pip install -r requirements.txt
 ```
 
-## Contributing
+---
 
-Feel free to submit issues or pull requests for improvements or bug fixes.
+## ⚙️ Usage
 
-## License
+```bash
+python crackpdf.py -p <pdf_file> -w <wordlist>
+```
 
-This project is licensed under the MIT License.
+### 🧪 Examples
+
+#### 🔹 Crack with custom wordlist:
+```bash
+python crackpdf.py -p secret.pdf -w rockyou.txt
+```
+
+#### 🔹 Use default `passwords.txt`:
+```bash
+python crackpdf.py -p secret.pdf
+```
+
+> The tool checks each password and prints the correct one when found.
+
+---
+
+## 📁 Project Structure
+
+```
+pdf-cracker/
+├── crackpdf.py          # Main password cracker script
+├── requirements.txt     # Contains pikepdf
+├── setup.sh             # Installs dependencies
+├── passwords.txt        # (Optional) default wordlist file
+└── README.md
+```
+
+---
+
+## 📜 Sample Output
+
+```
+Password found: letmein123
+```
+
+If the password is not in the wordlist:
+
+```
+Password not found in the provided wordlist.
+```
+
+---
+
+##  Legal Disclaimer
+
+This tool is for **educational and authorized use only**.  
+Do **not** use this on documents you do not have permission to access.
+
+---
+
+##  Author
+
+**err0rgod**  
+> _"If it’s locked by a password, it’s still just code."_
